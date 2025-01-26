@@ -1,4 +1,4 @@
-const API_KEY = ""; // Add your API key
+const API_KEY = "2663a47da530c754207396eef5db5fb1"; // Add your API key
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('search-btn').addEventListener('click', function (ev) {
