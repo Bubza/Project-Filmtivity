@@ -3,12 +3,13 @@ const API_KEY = "2663a47da530c754207396eef5db5fb1"; // Add your API key
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('search-btn').addEventListener('click', function (ev) {
         ev.preventDefault();
-        let title = document.getElementById('search').value;
-
+        const title = document.getElementById('search').value;
+        title.innerHTML = '';
         if (title.trim()) {
             fetchMovie(title);
             document.getElementById('details-page').style.display = 'block'; // Show the details page
         } else {
+            window.alert('Please enter a movie title');
             document.getElementById('details-page').style.display = 'none'; // Hide the details page
         }
     });
@@ -20,12 +21,12 @@ function fetchMovie(title) {
         .then(data => {
             let movieData = data.results[0];
 
-            document.getElementById('title').textContent = data.title;
-            document.getElementById('release_date').textContent = data.release_date;
-            document.getElementById('overview').textContent = data.overview;
-            document.getElementById('vote_average').textContent = data.vote_average;
-            document.getElementById('original_language').textContent = data.original_language;
-            document.getElementById('poster').src = 'https://image.tmdb.org/t/p/w500' + data.poster_path;
+            document.getElementById('title').textContent = movieData.title;
+            document.getElementById('release_date').textContent = movieData.release_date;
+            document.getElementById('overview').textContent = movieData.overview;
+            document.getElementById('vote_average').textContent = movieData.vote_average;
+            document.getElementById('original_language').textContent = movieData.original_language;
+            document.getElementById('poster').src = 'https://image.tmdb.org/t/p/w500' + movieData.poster_path;
         })
         .catch(error => console.error(error));
         
